@@ -1,11 +1,17 @@
 import Link from "next/link";
-import styles from '../styles/Navbar.module.css'
+import styles from "../styles/Navbar.module.css";
 
 const Navbar = () => (
     <header>
-        <a href="/" className={styles.logo}>
-            GestãoFacil
-        </a>
+        <Link href="/">
+            <a className={styles.logo}>GestãoFacil</a>
+        </Link>
+        <input type="checkbox" id="checkbox-menu" />
+        <label className="hamburguer" htmlFor="checkbox-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
     </header>
 );
 

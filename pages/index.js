@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 const Index = ({ produtos }) => {
-    return <>{produtos}</>;
+    return <>Página principal</>;
 };
 
 Index.getInitialProps = async () => {
