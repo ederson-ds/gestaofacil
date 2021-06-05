@@ -23,6 +23,7 @@ const NewProduto = ({ produtos }) => {
 
     return (
         <div className="container">
+            <h1>Cadastro de produto</h1>
             <form onSubmit={novoProduto} method="POST">
                 <div className="row">
                     <div className="col-md-6">

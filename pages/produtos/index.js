@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Datatable from "../../components/Datatable";
 import { server } from "../../config";
 
 const Produtos = ({ produtos }) => {
@@ -9,9 +10,7 @@ const Produtos = ({ produtos }) => {
                 <a>Novo produto</a>
             </Link>
             <br />
-            {produtos.map((produto) => {
-                return produto.descricao;
-            })}
+            <Datatable data={produtos.items} totalItems={produtos.totalItems} />
         </>
     );
 };
@@ -19,7 +18,6 @@ const Produtos = ({ produtos }) => {
 Produtos.getInitialProps = async () => {
     const res = await fetch(`${server}/api/produtos`);
     const { data } = await res.json();
-
     return { produtos: data };
 };
 
