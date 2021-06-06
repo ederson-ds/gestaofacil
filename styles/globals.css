@@ -150,3 +150,21 @@ header {
 .paginacao li:hover {
     background: #ffd5c8;
 }
+
+.disabled {
+    color: gray;
+    opacity: 0.5;
+    cursor: default !important;
+}
+
+.disabled:hover {
+    background: none !important;
+}
+
+.paginaAtiva {
+    background: #f16234;
+}
+
+.paginaAtiva:hover {
+    background: #f16234 !important;
+}

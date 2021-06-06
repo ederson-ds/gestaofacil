@@ -1,16 +1,37 @@
-import Link from "next/link";
-import Router from 'next/router'
+import Paginacao from "../components/Paginacao";
+import Router from "next/router";
 
 const Datatable = (props) => {
-    const teste = async (e) => {
+    const mudarRegistros = (e) => {
+        let { value } = e.target;
         Router.push({
-            pathname: '/produtos',
-            query: { page: 3 },
-        })
+            pathname: "/produtos",
+            query: { pagina: 1, registros: value },
+        });
     };
-
     return (
         <>
+            <div className="row">
+                <div className="col-12 co-sm-4 col-md-8 col-lg-6 col-xl-4">
+                    <div style={{ display: "flex" }}>
+                        <span style={{ margin: "7px 6px", display: "block" }}>Exibir</span>
+                        <select
+                            onChange={mudarRegistros}
+                            className="form-select"
+                            value={props.registros}
+                            style={{width: "38%"}}
+                        >
+                            <option defaultValue>5</option>
+                            <option value="2">2</option>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                        <span style={{ margin: "7px 6px", display: "block" }}>registros por página</span>
+                    </div>
+                </div>
+            </div>
             <table className="table">
                 <thead>
                     <tr>
@@ -27,17 +48,10 @@ const Datatable = (props) => {
                     })}
                 </tbody>
             </table>
-            <ul className="paginacao">
-                <li className="paginacao-anterior">Anterior</li>
-                <li className="paginacao-numero">1</li>
-
-                <li onClick={teste} className="paginacao-numero">
-                    2
-                </li>
-
-                <li className="paginacao-proximo">Próximo</li>
-            </ul>
-            Mostrando 1 a 5 de um total de {props.totalItems}
+            <Paginacao pagina={props.pagina} totalItems={props.totalItems} registros={props.registros} />
+            Mostrando {props.pagina * props.registros - (props.registros - 1)} a{" "}
+            {props.pagina == Math.ceil(props.totalItems / props.registros) ? props.totalItems : props.pagina * props.registros} de um
+            total de {props.totalItems}
         </>
     );
 };
