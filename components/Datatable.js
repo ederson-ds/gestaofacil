@@ -14,12 +14,14 @@ const Datatable = (props) => {
             <div className="row">
                 <div className="col-12 co-sm-4 col-md-8 col-lg-6 col-xl-4">
                     <div style={{ display: "flex" }}>
-                        <span style={{ margin: "7px 6px", display: "block" }}>Exibir</span>
+                        <span style={{ margin: "7px 6px", display: "block" }}>
+                            Exibir
+                        </span>
                         <select
                             onChange={mudarRegistros}
                             className="form-select"
                             value={props.registros}
-                            style={{width: "38%"}}
+                            style={{ width: "38%" }}
                         >
                             <option defaultValue>5</option>
                             <option value="2">2</option>
@@ -28,7 +30,27 @@ const Datatable = (props) => {
                             <option value="50">50</option>
                             <option value="100">100</option>
                         </select>
-                        <span style={{ margin: "7px 6px", display: "block" }}>registros por página</span>
+                        <span style={{ margin: "7px 6px", display: "block" }}>
+                            registros por página
+                        </span>
+                    </div>
+                </div>
+                <div className="col-12 co-sm-8 col-md-4 col-lg-6 col-xl-8">
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Buscar"
+                        />
+                        <div className="input-group-append">
+                            <button
+                                className="btn btn-dark"
+                                type="button"
+                                style={{ borderRadius: "0px 10px 10px 0px" }}
+                            >
+                                <i className="fa fa-search"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,10 +70,16 @@ const Datatable = (props) => {
                     })}
                 </tbody>
             </table>
-            <Paginacao pagina={props.pagina} totalItems={props.totalItems} registros={props.registros} />
+            <Paginacao
+                pagina={props.pagina}
+                totalItems={props.totalItems}
+                registros={props.registros}
+            />
             Mostrando {props.pagina * props.registros - (props.registros - 1)} a{" "}
-            {props.pagina == Math.ceil(props.totalItems / props.registros) ? props.totalItems : props.pagina * props.registros} de um
-            total de {props.totalItems}
+            {props.pagina == Math.ceil(props.totalItems / props.registros)
+                ? props.totalItems
+                : props.pagina * props.registros}{" "}
+            de um total de {props.totalItems}
         </>
     );
 };
